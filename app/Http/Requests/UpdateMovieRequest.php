@@ -28,7 +28,8 @@ class UpdateMovieRequest extends FormRequest
             'age_limit' => 'nullable|integer',
             'release_year' => 'nullable|integer',
             'film_director' => 'nullable|min:2',
-            'poster' => 'nullable'
+            'poster' => 'nullable',
+            'trailer' => 'nullable'
         ];
     }
 }

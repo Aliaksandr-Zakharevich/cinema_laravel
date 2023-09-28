@@ -50,7 +50,7 @@
                     <div class="portfolio-content" data-lightbox="gallery">
                         <br>
                         <div class="video-wrap">
-                            {{--                            <iframe {{$movie->trailer}}></iframe>--}}
+                            <iframe src="{{$movie->trailer}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                         <br>
                         <a title="{{$movie->title}}" data-lightbox="gallery-image" href="#">

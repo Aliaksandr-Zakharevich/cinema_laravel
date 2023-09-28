@@ -46,6 +46,20 @@
                                         <input type="text" class="form-control" value="{{ $movie->film_director }}"
                                                name="film_director" placeholder="Enter movie director">
                                     </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="poster">Poster</label>
+                                            <input type="text" class="form-control" value="{{ $movie->poster }}"
+                                                   name="poster" placeholder="Enter url poster">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="trailer">Trailer</label>
+                                            <input type="text" class="form-control" value="{{ $movie->trailer }}"
+                                                   name="trailer" placeholder="Enter url trailer">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-6">

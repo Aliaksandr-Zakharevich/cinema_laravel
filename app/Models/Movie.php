@@ -18,6 +18,8 @@ class Movie extends Model
         'age_limit',
         'release_year',
         'film_director',
+        'poster',
+        'trailer',
         'is_active'
     ];
 

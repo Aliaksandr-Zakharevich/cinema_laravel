@@ -29,6 +29,7 @@ class CreateMovieRequest extends FormRequest
             'release_year' => 'nullable|integer',
             'film_director' => 'nullable|min:2',
             'poster' => 'nullable',
+            'trailer' => 'nullable',
             'genres' => 'nullable'
         ];
     }

@@ -42,6 +42,20 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="poster">Poster</label>
+                                        <input type="text" class="form-control" value="{{ old('poster') }}"
+                                               name="poster" placeholder="Enter url poster">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="trailer">Trailer</label>
+                                        <input type="text" class="form-control" value="{{ old('trailer') }}"
+                                               name="trailer" placeholder="Enter url trailer">
+                                    </div>
+                                </div>
+                                <div class="form-row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="genres">Genres</label>
@@ -50,22 +64,6 @@
                                                     <option value="{{$genre->id}}">{{$genre->title}}</option>
                                                 @endforeach
                                             </select>
-                                            {{--                                            <div class="btn-group" role="group"  aria-label="Basic checkbox toggle button group">--}}
-                                            {{--                                                @foreach($genres as $genre)--}}
-                                            {{--                                                    <input type="checkbox" name="genre_id" class="btn-check" id="{{$genre->id}}" autocomplete="off">--}}
-                                            {{--                                                    <label class="btn btn-outline-primary" for="{{$genre->id}}">{{$genre->title}}</label>--}}
-                                            {{--                                                @endforeach--}}
-                                            {{--                                            </div>--}}
-
-                                            {{--                                            @foreach($genres as $genre)--}}
-                                            {{--                                                <div class="form-check">--}}
-                                            {{--                                                    <input class="form-check-input" name="genre_id" type="checkbox" value="{{$genre->id}}" id="flexCheckDefault">--}}
-                                            {{--                                                    <label class="form-check-label" for="flexCheckDefault">--}}
-                                            {{--                                                        {{$genre->title}}--}}
-                                            {{--                                                    </label>--}}
-                                            {{--                                                </div>--}}
-                                            {{--                                            @endforeach--}}
-
                                         </div>
                                     </div>
                                     <div class="col-md-6">
