@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-    <section class="fullscreen login-screen" data-bg-parallax="{{ asset('img/bg-login.jpg') }}">
+    <section class="fullscreen login-screen" data-bg-parallax="https://i.redd.it/0ff76k4cjhj91.png">
         <div class="container container-fullscreen">
             <div class="text-middle">
                 <div class="row">
@@ -42,11 +42,11 @@
                                 </div>
                                 <div class="col-lg-12 form-group">
                                     <button class="btn" type="submit">Register New Account</button>
-                                    <p class="small">Do you have account? <a
-                                            href="{{ route('auth.loginPage') }}">Login</a></p>
                                 </div>
                             </div>
                         </form>
+                        <p class="small">Do you have account? <a
+                                href="{{ route('auth.loginPage') }}">Login</a></p>
                     </div>
                 </div>
             </div>

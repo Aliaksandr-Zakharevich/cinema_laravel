@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
     <div id="slider" class="inspiro-slider dots-creative" data-height-xs="360">
-        <div class="slide kenburns" style="background-image:url('images/about/parallax-1.jpg');">
+        <div class="slide kenburns" style="background-image:url('https://c1.wallpaperflare.com/preview/736/348/997/theater-theatre-cinema-movies.jpg');">
             <div class="bg-overlay"></div>
             <div class="container">
                 <div class="slide-captions text-center text-light">

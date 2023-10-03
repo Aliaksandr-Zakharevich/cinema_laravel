@@ -14,6 +14,7 @@ class Seat extends Model
         'row',
         'number',
         'hall_id',
+        'ticket_id',
         'session_id',
         'seat_type_id',
         'seat_status_id',
@@ -39,5 +40,10 @@ class Seat extends Model
     public function seatStatus(): BelongsTo
     {
         return $this->belongsTo(SeatStatus::class);
+    }
+
+    public function ticket(): BelongsTo
+    {
+        return $this->belongsTo(Ticket::class);
     }
 }

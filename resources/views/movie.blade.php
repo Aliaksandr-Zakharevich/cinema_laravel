@@ -23,7 +23,6 @@
                         <div class="attribute"><strong>Duration:</strong> {{$movie->duration}} minutes</div>
                         <div class="attribute"><strong>Age Limit:</strong> {{$movie->age_limit}}+</div>
                     </div>
-
                     @foreach ($halls as $hall)
                         <div class="movie-seances__hall">
                             <h3 class="movie-seances__hall-title">{{ $hall->title }}</h3>

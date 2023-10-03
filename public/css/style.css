@@ -18506,7 +18506,7 @@ body[data-bg-image] {
 }
 
 .grid-item:hover{
-    transform: scale(1.1);
+    transform: translateY(-5px);
 }
 
 .movie-seances__list{

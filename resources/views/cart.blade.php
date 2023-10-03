@@ -12,6 +12,12 @@
     </section>
     <!-- end: Page title -->
     @if($seats)
+        <div class="container">
+            <div class="p-t-10 m-b-20">
+                <a class="btn icon-left" href="{{route('seance', ['session' => $session->id])}}"><span>Return To Seance</span></a>
+            </div>
+        </div>
+
         <!-- SHOP CART -->
         <section id="shop-cart">
             <div class="container">
@@ -33,7 +39,10 @@
                             @foreach($seats as $seat)
                                 <tr>
                                     <td class="cart-product-remove">
-                                        <a href="#"><i class="fa fa-times"></i></a>
+                                        <form action="{{route('cart.remove', ['seat' => $seat->id])}}" method="POST">
+                                            @csrf
+                                            <a href="#" onclick="this.parentNode.submit()"><i class="fa fa-times"></i></a>
+                                        </form>
                                     </td>
                                     <td class="cart-product-thumbnail">
                                         <a href="#">
@@ -74,38 +83,6 @@
                 </form>
             </div>
         </section>
-        <!-- end: SHOP CART -->
-        {{--    <form action="{{route('tickets.create', ['seance' => $session->id])}}" method="POST">--}}
-        {{--        @csrf--}}
-        {{--        <h2>@if(count($seats) > 1) Ваши билеты @else Ваш билет @endif {{' на фильм "'. $session->movie->title .'"'}}</h2>--}}
-        {{--        <table>--}}
-        {{--            <tr>--}}
-        {{--                <th>Дата Сеанса: </th>--}}
-        {{--                <td>{{$session->start_date}}</td>--}}
-        {{--            </tr>--}}
-        {{--            <tr>--}}
-        {{--                <th>Зал: </th>--}}
-        {{--                <td>{{$session->hall->title}}</td>--}}
-        {{--            </tr>--}}
-        {{--            <tr>--}}
-        {{--                <th>Места: </th>--}}
-        {{--            @foreach($seats as $index => $seat)--}}
-        {{--                <tr>--}}
-        {{--                    <td>{{$index + 1 . '. Ряд ' . $seat->row . ', Место '.$seat->number.' , '.$seat->seatType->price.' BYN'}}</td>--}}
-        {{--                </tr>--}}
-        {{--                @endforeach--}}
-        {{--                </tr>--}}
-        {{--                <tr>--}}
-        {{--                    <th>Общая стоимость: </th>--}}
-        {{--                    <td>--}}
-        {{--                        {{$seats->sum(function ($seat){--}}
-        {{--                        return $seat->seatType->price;--}}
-        {{--                        })}}--}}
-        {{--                    </td>--}}
-        {{--                </tr>--}}
-        {{--        </table>--}}
-        {{--        <button type="submit" class="btn btn-submit">Pay</button>--}}
-        {{--    </form>--}}
     @else
         <!-- SHOP CART EMPTY -->
         <section id="shop-cart">

@@ -60,8 +60,10 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
+        $genres = Genre::all();
         return view('admin.movies.update', [
-            'movie' => $movie
+            'movie' => $movie,
+            'genres' => $genres
         ]);
     }
 
@@ -71,7 +73,11 @@ class MovieController extends Controller
     public function update(UpdateMovieRequest $request, Movie $movie)
     {
         $movie->update($request->validated());
-
+        if ($request->has('genres')) {
+            foreach ($request->genres as $genre) {
+                $movie->genres()->attach($genre);
+            }
+        }
         return redirect()->route('admin.movies.index')->with('success', 'Movie has been successfully updated');
     }
 

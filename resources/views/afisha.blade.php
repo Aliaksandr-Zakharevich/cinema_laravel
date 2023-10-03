@@ -15,43 +15,38 @@
     <!-- Shop products -->
     <section>
         <div class="container">
-            <div class="row m-b-20">
-                <div class="col-lg-6 p-t-10 m-b-20">
-                    <h3 class="m-b-20">A Monochromatic Spring ’15</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, sit, exercitationem,
-                        consequuntur, assumenda iusto eos commodi alias.</p>
+            <form class="row gx-3 gy-2 align-items-center m-b-20">
+                <div class="col-sm-3">
+                    <label class="visually-hidden" for="specificSizeSelect">Sort by hall</label>
+                    <select class="form-select" name="hall" id="specificSizeSelect">
+                        <option value="" selected></option>
+                        @foreach($halls as $index => $hall)
+                            <option value="{{$hall->id}}">{{$hall->title}}</option>
+                        @endforeach
+                    </select>
                 </div>
-                <div class="col-lg-3">
-                    <div class="order-select">
-                        <h6>Sort by</h6>
-                        <p>Showing 1&ndash;12 of 25 results</p>
-                        <form method="get">
-                            <select class="form-control">
-                                <option value="order" selected="selected">Default sorting</option>
-                                <option value="popularity">Sort by popularity</option>
-                                <option value="rating">Sort by average rating</option>
-                                <option value="date">Sort by newness</option>
-                                <option value="price">Sort by price: low to high</option>
-                                <option value="price-desc">Sort by price: high to low</option>
-                            </select>
-                        </form>
-                    </div>
+                <div class="col-sm-3">
+                    <label class="visually-hidden" for="specificSizeSelect">Sort by day</label>
+                    <select class="form-select" name="day" id="specificSizeSelect">
+                        <option value="" selected></option>
+                        @foreach($days as $index => $day)
+                            <option value="{{$index}}">{{$day}}</option>
+                        @endforeach
+                    </select>
                 </div>
-                <div class="col-lg-3">
-                    <div class="order-select">
-                        <h6>Sort by Price</h6>
-                        <p>From 0 - 190$</p>
-                        <form method="get">
-                            <select class="form-control">
-                                <option value="" selected="selected">0$ - 50$</option>
-                                <option value="">51$ - 90$</option>
-                                <option value="">91$ - 120$</option>
-                                <option value="">121$ - 200$</option>
-                            </select>
-                        </form>
-                    </div>
+                <div class="col-sm-3">
+                    <label class="visually-hidden" for="specificSizeSelect">Sort by genre</label>
+                    <select class="form-select" name="genre" id="specificSizeSelect">
+                        <option value="" selected></option>
+                        @foreach($genres as $index => $genre)
+                            <option value="{{$genre->id}}">{{$genre->title}}</option>
+                        @endforeach
+                    </select>
                 </div>
-            </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Sort</button>
+                </div>
+            </form>
             <!--Product list-->
             <div class="shop">
                 <div class="grid-layout grid-3-columns" data-item="grid-item">
@@ -78,6 +73,7 @@
                                         </h3>
                                     </div>
                                 </div>
+                                <a href="{{route('movies.show', ['movie' => $movie->id])}}" class="btn btn-outline btn-dark">Bye Ticket</a>
                             </div>
                         </div>
                     @endforeach

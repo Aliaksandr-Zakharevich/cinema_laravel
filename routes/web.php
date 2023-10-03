@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
@@ -91,7 +92,11 @@ Route::group(['prefix' => '/cart', 'controller' => CartController::class], funct
     Route::post('/{seat}/remove', 'remove')->name('cart.remove');
 });
 
-Route::group(['prefix' => '/tickets', 'controller' => TicketController::class, 'middleware' => 'auth'], function () {
-    Route::get('/', 'allTickets')->name('tickets.all');
-    Route::post('/{seance}/create', 'createTicket')->name('tickets.create');
+Route::group(['prefix' => '/tickets', 'middleware' => 'auth'], function () {
+    Route::get('/', [TicketController::class, 'allTickets'])->name('tickets.all');
+    Route::post('/{seance}/create', [TicketController::class, 'createTicket'])->name('tickets.create');
+    Route::get('/{ticket}/payment/create', [PaymentController::class, 'createPayment'])->name('payment.create');
+    Route::get('/payment/{hash}', [PaymentController::class, 'callback'])->name('payment.callback');
 });
+
+

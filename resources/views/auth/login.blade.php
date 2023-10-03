@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-    <section class="fullscreen login-screen" data-bg-parallax="{{ asset('img/bg-login.jpg') }}">
+    <section class="fullscreen login-screen" data-bg-parallax="https://i.redd.it/0ff76k4cjhj91.png">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 center p-50 background-white b-r-6">

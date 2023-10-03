@@ -9,8 +9,7 @@
                             <span class="h4">Updated {{ $movie->title }}</span>
                         </div>
                         <div class="card-body">
-                            <form enctype="multipart/form-data"
-                                  action="{{ route('admin.movies.update', ['movie' => $movie->id]) }}"
+                            <form action="{{ route('admin.movies.update', ['movie' => $movie->id]) }}"
                                   class="form-validate" method="POST">
                                 @csrf
                                 <div class="form-row">
@@ -20,9 +19,29 @@
                                                placeholder="Title">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="description">Description</label>
-                                        <input type="text" class="form-control" value="{{ $movie->description }}"
-                                               name="short_description" placeholder="Enter your short description">
+                                        <label for="release_year">Release Year</label>
+                                        <input type="number" class="form-control" value="{{ $movie->release_year }}"
+                                               name="release_year" placeholder="Enter movie release year">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="release_year">Age Limit</label>
+                                        <input type="number" class="form-control" value="{{ $movie->age_limit }}"
+                                               name="age_limit" placeholder="Enter movie age limit">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="description">Film Director</label>
+                                        <input type="text" class="form-control" value="{{ $movie->film_director }}"
+                                               name="film_director" placeholder="Enter movie director">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="poster">Poster</label>
+                                        <input type="text" class="form-control" value="{{ $movie->poster }}"
+                                               name="poster" placeholder="Enter url poster">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="trailer">Trailer</label>
+                                        <input type="text" class="form-control" value="{{ $movie->trailer }}"
+                                               name="trailer" placeholder="Enter url trailer">
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -30,49 +49,6 @@
                                         <label for="price">Duration</label>
                                         <input type="number" class="form-control" value="{{ $movie->duration }}"
                                                name="duration" placeholder="Enter duration">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="sale_price">Age Limit</label>
-                                        <input type="text" class="form-control" value="{{ $movie->age_limit }}"
-                                               name="age_limit" placeholder="Enter age limit">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="sale_price">Release Year</label>
-                                        <input type="text" class="form-control" value="{{ $movie->release_year }}"
-                                               name="release_year" placeholder="Enter release year">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="sale_price">Movie Director</label>
-                                        <input type="text" class="form-control" value="{{ $movie->film_director }}"
-                                               name="film_director" placeholder="Enter movie director">
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="poster">Poster</label>
-                                            <input type="text" class="form-control" value="{{ $movie->poster }}"
-                                                   name="poster" placeholder="Enter url poster">
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="trailer">Trailer</label>
-                                            <input type="text" class="form-control" value="{{ $movie->trailer }}"
-                                                   name="trailer" placeholder="Enter url trailer">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="category">Genre</label>
-                                            <select name="genre_id" class="form-control">
-                                                <option value="">None</option>
-                                                @foreach($movie->genres as $genre)
-                                                    <option value="{{ $genre->id }}"
-                                                            @if($movie->$genre == $genre->id) selected @endif>{{ $genre->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -89,17 +65,21 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="genres">Genres</label>
+                                            <select name="genres[]" class="form-control" multiple>
+                                                @foreach($genres as $genre)
+                                                    <option value="{{$genre->id}}"
+                                                            @if($movie->genres->contains($genre->id)) selected @endif>{{$genre->title}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <label>Description</label>
                                         <div class="form-group">
                                             <textarea class="form-control" name="description"
                                                       rows="10">{{ $movie->description }}</textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="file">File</label>
-                                            <input type="file" name="files[]" multiple class="form-control-file"
-                                                   id="file">
                                         </div>
                                     </div>
                                 </div>

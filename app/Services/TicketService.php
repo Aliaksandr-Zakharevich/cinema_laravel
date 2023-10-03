@@ -8,26 +8,34 @@ use App\Models\Session;
 use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use PHPUnit\Exception;
 
 class TicketService
 {
-    public function create(Session $seance, User $user)
+    public function create(Session $seance)
     {
         $cart = session()->get('cart', []);
         $seats = Seat::with('seatType')->whereIn('id', array_keys($cart))->get();
         $seatStatus = SeatStatus::query()->where('title', 'Occupied')->first();
 
-        $ticket = Ticket::query()->create([
-            'user_id' => $user->id,
-            'session_id' => $seance->id
-        ]);
+        try{
+            $ticket = Ticket::query()->create([
+                'user_id' => Auth::user()->id,
+                'session_id' => $seance->id
+            ]);
 
-        foreach ($seats as $seat) {
-            $ticket->seats()->attach($seat);
-            $seat->seatStatus()->associate($seatStatus);
-            $seat->save();
+            foreach ($seats as $seat) {
+                $seat->ticket_id = $ticket->id;
+                $seat->seatStatus()->associate($seatStatus);
+                $seat->save();
+            }
+            session()->forget('cart');
+            DB::commit();
+        } catch (Exception $exception){
+            DB::rollBack();
         }
-        session()->forget('cart');
+
         return $ticket;
     }
 

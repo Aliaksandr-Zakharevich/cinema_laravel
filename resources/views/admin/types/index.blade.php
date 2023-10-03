@@ -10,7 +10,7 @@
         </div>
     </section>
     <!-- end: Page title -->
-
+    @if(count($seatTypes) !== 0)
     <section id="page-content" class="no-sidebar">
         <div class="container">
             <div class="row mb-3">
@@ -48,4 +48,16 @@
             </div>
         </div>
     </section>
+    @else
+        <section id=id="page-content" class="no-sidebar">
+            <div class="container">
+                <div class="p-t-10 m-b-20 text-center">
+                    <div class="heading-text heading-line text-center">
+                        <h4>Seat Types is currently empty.</h4>
+                    </div>
+                    <a class="btn icon-left" href="{{  route('admin.types.create.view') }}"><span>Add Seat Type</span></a>
+                </div>
+            </div>
+        </section>
+    @endif
 @endsection

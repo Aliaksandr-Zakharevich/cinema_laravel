@@ -9,7 +9,7 @@
                             <span class="h4">Create Movie</span>
                         </div>
                         <div class="card-body">
-                            <form enctype="multipart/form-data" action="{{ route('admin.movies.create') }}"
+                            <form action="{{ route('admin.movies.create') }}"
                                   class="form-validate" method="POST">
                                 @csrf
                                 <div class="form-row">
@@ -33,22 +33,11 @@
                                         <input type="text" class="form-control" value="{{ old('film_director') }}"
                                                name="film_director" placeholder="Enter movie director">
                                     </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="price">Duration</label>
-                                        <input type="number" class="form-control" value="{{ old('duration') }}"
-                                               name="duration" placeholder="Enter duration">
-                                    </div>
-                                </div>
-                                <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="poster">Poster</label>
                                         <input type="text" class="form-control" value="{{ old('poster') }}"
                                                name="poster" placeholder="Enter url poster">
                                     </div>
-                                </div>
-                                <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="trailer">Trailer</label>
                                         <input type="text" class="form-control" value="{{ old('trailer') }}"
@@ -56,15 +45,10 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="genres">Genres</label>
-                                            <select name="genres[]" class="form-control" multiple>
-                                                @foreach($genres as $genre)
-                                                    <option value="{{$genre->id}}">{{$genre->title}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="price">Duration</label>
+                                        <input type="number" class="form-control" value="{{ old('duration') }}"
+                                               name="duration" placeholder="Enter duration">
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -81,17 +65,20 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="genres">Genres</label>
+                                            <select name="genres[]" class="form-control" multiple>
+                                                @foreach($genres as $genre)
+                                                    <option value="{{$genre->id}}">{{$genre->title}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <label>Description</label>
                                         <div class="form-group">
                                             <textarea class="form-control" name="description"
                                                       rows="10">{{ old('description') }}</textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="file">File</label>
-                                            <input type="file" name="files[]" multiple class="form-control-file"
-                                                   id="file">
                                         </div>
                                     </div>
                                 </div>

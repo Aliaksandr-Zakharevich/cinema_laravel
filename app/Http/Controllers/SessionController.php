@@ -6,13 +6,14 @@ use App\Models\Hall;
 use App\Models\Movie;
 use App\Models\Seat;
 use App\Models\Session;
+use App\Services\SeatService;
 use Illuminate\Http\Request;
 
 class SessionController extends Controller
 {
-    public function seance(Session $session)
+    public function seance(Session $session, SeatService $service)
     {
-
+        $service->removeSeat();
         $movie = Movie::query()->where('id', $session->movie->id)->get();
         $hall = Hall::find($session->hall->id);
         $seats = Seat::query()->where('session_id', $session->id)->get();

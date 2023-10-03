@@ -10,7 +10,6 @@
     <title>Cinema</title>
     <link href="{{ asset('/css/plugins.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/custom.css') }}" rel="stylesheet">
 </head>
 <body>
 <div class="body-inner">

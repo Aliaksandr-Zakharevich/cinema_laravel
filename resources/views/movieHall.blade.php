@@ -25,7 +25,7 @@
                 @for($i = 0; $i<$hall->rows_count; $i++)
                     <div class="row">
                         @for($j = 0; $j<$hall->seats_in_row; $j++)
-                            <div class="col-lg-3">
+                            <div class="col">
                                 <form action="@if($seats[$j+$i*$hall->seats_in_row]->seatStatus->title == 'Selected') {{route('cart.remove', ['seat' => $seats[$j+$i*$hall->seats_in_row]->id])}}
                                     @else {{route('cart.add', ['seat' => $seats[$j+$i*$hall->seats_in_row]->id])}}
                                     @endif" class="form-button" method="POST">

@@ -24,7 +24,7 @@ class MovieFactory extends Factory
             'release_year' => $this->faker->numberBetween(1950, 2023),
             'film_director' => $this->faker->lastName(),
             'poster' => 'https://source.unsplash.com/featured/640x480',
-            'trailer' => 'src="https://www.youtube.com/embed/UiIRlg4Xr5w?si=9MjIaLkPQVM-dCjR"'
+            'trailer' => "https://www.youtube.com/embed/UiIRlg4Xr5w?si=C7XCxjpDuilacj43"
         ];
     }
 }

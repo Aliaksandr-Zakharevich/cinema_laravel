@@ -25,10 +25,8 @@ class TicketController extends Controller
 
     public function createTicket(Session $seance)
     {
-        $user = Auth::user();
-        $ticket = $this->ticketService->create($seance, $user);
-        Mail::to($user->email)->send(new TicketMail($user, $ticket, $seance));
-        return redirect()->route('tickets.all');
+        $ticket = $this->ticketService->create($seance);
+        return redirect()->route('payment.create', ['ticket' => $ticket->id]);
     }
 
     public function allTickets()
